@@ -3,4 +3,6 @@ pandas
 numpy 
 pymongo
 certifi
--e . 
+pymongo[srv]==3.12
+ipykernal
+# -e . 
