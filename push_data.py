@@ -40,8 +40,11 @@ class NetworkDataExtract():
             self.database = database
             self.collection = collection
             self.records = records
+            # connecting to the mongodb server
             self.mongo_client = pymongo.MongoClient(mongo_db_url)
+            # create the object of database
             self.database = self.mongo_client[self.database]
+            # create the object of collection(table)
             self.collection = self.database[self.collection]
             self.collection.insert_many(self.records)
             return (len(self.records))
