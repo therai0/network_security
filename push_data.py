@@ -55,10 +55,8 @@ class NetworkDataExtract():
 if __name__ == "__main__":
     FILE_PATH = "Network_data/phisingData.csv"
     DATABASE = "bhaskar"
-    print(type(DATABASE))
     collecation = "Networkdata"
     network_obj = NetworkDataExtract()
     records = network_obj.csv_to_json_convertor(FILE_PATH)
     lenght = network_obj.insert_data_to_mongodb(records=records,database=DATABASE,collection=collecation)
-    print(lenght)
 
