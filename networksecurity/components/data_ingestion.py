@@ -1,4 +1,5 @@
 from pyexpat import features
+
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 
@@ -10,7 +11,6 @@ import sys
 import pymongo
 import pandas as pd 
 import numpy as np 
-from typing import List
 from dotenv import load_dotenv
 from sklearn.model_selection import train_test_split
 
@@ -20,12 +20,11 @@ MONGODB_URL = os.getenv("MONGODB_URL")
 
 
 class DataIngestion:
-    def __init_(self,data_ingestion_config:DataIngestionConfig):
+    def __init__(self,data_ingestion_config:DataIngestionConfig):
         try:
             self.data_ingestion_config = data_ingestion_config
         except Exception as e:
             raise NetworkSecurityException(e,sys)
-    
     
     def export_connection_as_dataframe(self):
         """
@@ -60,15 +59,15 @@ class DataIngestion:
             raise NetworkSecurityException(e,sys)
 
 
-    def split_data_as_train_test(self,datafram:pd.DataFrame):
+    def split_data_as_train_test(self,dataframe:pd.DataFrame):
         try:
-            train_data,test_data = train_test_split(datafram,test_size=self.data_ingestion_config.train_test_split_ratio)
+            train_data,test_data = train_test_split(dataframe,test_size=self.data_ingestion_config.train_test_split_ratio)
             logging.info("Split the data into train and test")
 
-            dir_path = os.path.dirname(self.data_ingestion_config.traning_file_path)
+            dir_path = os.path.dirname(self.data_ingestion_config.train_file_path)
             os.makedirs(dir_path,exist_ok=True)
 
-            train_data.to_csv(self.data_ingestion_config.traning_file_path,index=False,header=True)
+            train_data.to_csv(self.data_ingestion_config.train_file_path,index=False,header=True)
             logging.info("Exporting traning dataset")
 
             test_data.to_csv(self.data_ingestion_config.test_file_path,index=False,header=True)
@@ -79,8 +78,10 @@ class DataIngestion:
 
     def initiate_data_ingestion(self):
         try:
+            logging.info("Data Ingestion started")
             dataframe = self.export_connection_as_dataframe()
             dataframe = self.export_data_into_features_store(dataframe=dataframe)
-            self.split_data_as_train_test(datafram=dataframe)
+            self.split_data_as_train_test(dataframe=dataframe)
+            logging.info("End of Data ingestion")
         except Exception as e:
-            raise(e,sys)
+            raise NetworkSecurityException(e,sys)
