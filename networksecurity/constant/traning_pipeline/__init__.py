@@ -1,6 +1,7 @@
-
+import numpy as np
 import os 
 """
+
 defining common constant variable for traning pipeline
 """
 TARGET_COLUMN = "Result"
@@ -36,4 +37,27 @@ DATA_VALIDATION_VALID_DIR:str  = "validated"
 DATA_VALIDATION_INVALID_DIR:str  = "invalid"
 DATA_VALIDATION_DRIFT_REPORT_DIR:str  = "drift_report"
 DATA_VALIDATION_DRIFT_REPORT_FILE_NAME:str  = "report.yaml"
+
+
+"""
+Data Transformation related constant file start with DATA_TRANSFORMATION
+"""
+DATA_TRANSFORMATION_DIR_NAME = "data_transformation" 
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR = "transformed"
+DATA_TRAINSFORMATION_TRANSFORMED_OBJECT_DIR_ = "transformed_object"
+
+
+# KNN imputer to replace nan value 
+DATA_TRANSFORMATION_IMPUTER_PARAMS:dict = {
+    "missing_value":np.nan,
+    "n_neighbors":3,
+    "weights":"uniform"
+
+}
+
+"""
+Preprocessor file name
+"""
+PREPROCESSOR_OBJECT_FILE_NAME = "preprocessor.pkl"
+
 
