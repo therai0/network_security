@@ -99,6 +99,9 @@ class DataTransformationConfig:
         self.data_transformed_train_file_path = os.path.join(self.data_transformation_dir,traning_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
         traning_pipeline.TRAIN_FILE_NAME.replace("csv","npy")
         )
+        self.data_transformed_test_file_path = os.path.join(self.data_transformation_dir,traning_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
+        traning_pipeline.TEST_FILE_NAME.replace("csv","npy")
+        )
         self.transformed_object_file_path = os.path.join(self.data_transformation_dir,traning_pipeline.DATA_TRAINSFORMATION_TRANSFORMED_OBJECT_DIR_,
         traning_pipeline.PREPROCESSOR_OBJECT_FILE_NAME
         )

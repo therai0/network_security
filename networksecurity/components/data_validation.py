@@ -1,22 +1,19 @@
-
-from networksecurity.entity.artifact_entity import DataValidationArtifacts
+from networksecurity.entity.artifact_entity import DataValidationArtifacts,DataIngestionArtifacts
 from networksecurity.entity.config_entity import DataValidationConfig ,DataIngestionConfig
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.utils.main_utils.utils import read_yaml_file,write_yaml_file
 from networksecurity.logging.logger import logging
-
 from scipy.stats import ks_2samp
 import pandas as pd 
-
 from networksecurity.constant.traning_pipeline import SCHEMA_FILE_PATH
-
 import os,sys 
 
+
 class DataValidation:
-    def __init__(self,data_validation_config:DataValidationConfig,data_ingestion_config:DataIngestionConfig):
+    def __init__(self,data_validation_config:DataValidationConfig,data_ingestion_artifacts:DataIngestionArtifacts):
         try:
             self.data_validation_config = data_validation_config
-            self.data_ingestion_config = data_ingestion_config
+            self.data_ingestion_artifacts = data_ingestion_artifacts
             self.schema_config = read_yaml_file(SCHEMA_FILE_PATH)
         except Exception as e:
             raise NetworkSecurityException(e,sys)
@@ -38,12 +35,11 @@ class DataValidation:
             logging.info(f"Required number of columns:{number_of_columns}")
             logging.info(f"Data frame has :{len(dataframe.columns)}")
             return number_of_columns == len(dataframe.columns)
-
         except Exception as e:
             raise NetworkSecurityException(e,sys)
     
+
     def detect_dataset_drift(self,base_df,current_df,threshold=0.05)->bool:
-        
         try:
             status = True 
             report = {}
@@ -68,13 +64,15 @@ class DataValidation:
             dir_path = os.path.dirname(drift_report_file_path)
             os.makedirs(dir_path,exist_ok=True)
             write_yaml_file(file_path=drift_report_file_path,content=report)
-
+            return status
         except Exception as e:
             raise NetworkSecurityException(e,sys)
+
+
     def init_data_validation(self)->DataValidationArtifacts:
         try:
-            train_file_path= self.data_ingestion_config.train_file_path
-            test_file_path = self.data_ingestion_config.test_file_path
+            train_file_path= self.data_ingestion_artifacts.train_file_path
+            test_file_path = self.data_ingestion_artifacts.test_file_path
 
             train_df = DataValidation.read_data(train_file_path)
             test_df = DataValidation.read_data(test_file_path)
@@ -96,8 +94,8 @@ class DataValidation:
 
             data_validation_artifacts = DataValidationArtifacts(
                 validation_status=status,
-                valid_test_file_path=self.data_ingestion_config.test_file_path,
-                valid_train_file_path=self.data_ingestion_config.train_file_path,
+                valid_test_file_path=self.data_validation_config.valid_data_test_path,
+                valid_train_file_path=self.data_validation_config.valid_data_train_path,
                 invalid_test_file_path=None,
                 invalid_train_file_path=None,
                 drift_report_file_path=self.data_validation_config.drift_report_file_path

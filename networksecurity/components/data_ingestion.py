@@ -1,5 +1,6 @@
 from pyexpat import features
 
+from networksecurity.entity.artifact_entity import DataIngestionArtifacts
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 
@@ -83,5 +84,9 @@ class DataIngestion:
             dataframe = self.export_data_into_features_store(dataframe=dataframe)
             self.split_data_as_train_test(dataframe=dataframe)
             logging.info("End of Data ingestion")
+
+            return DataIngestionArtifacts(train_file_path=self.data_ingestion_config.train_file_path,
+            test_file_path=self.data_ingestion_config.test_file_path)
+            
         except Exception as e:
             raise NetworkSecurityException(e,sys)

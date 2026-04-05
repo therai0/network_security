@@ -49,7 +49,7 @@ DATA_TRAINSFORMATION_TRANSFORMED_OBJECT_DIR_ = "transformed_object"
 
 # KNN imputer to replace nan value 
 DATA_TRANSFORMATION_IMPUTER_PARAMS:dict = {
-    "missing_value":np.nan,
+    "missing_values":np.nan,
     "n_neighbors":3,
     "weights":"uniform"
 

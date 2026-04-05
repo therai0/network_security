@@ -1,0 +1,13 @@
+[2026-04-05 09:12:23,944] 11 root INFO Data ingestion started
+[2026-04-05 09:12:23,944] 62 root INFO Data ingestion config
+[2026-04-05 09:12:23,944] 82 root INFO Data Ingestion started
+[2026-04-05 09:12:25,942] 66 root INFO Split the data into train and test
+[2026-04-05 09:12:25,965] 72 root INFO Exporting traning dataset
+[2026-04-05 09:12:25,971] 75 root INFO Exporting test dataset
+[2026-04-05 09:12:25,971] 86 root INFO End of Data ingestion
+[2026-04-05 09:12:25,971] 17 root INFO Complete of data ingestion
+[2026-04-05 09:12:25,971] 18 root INFO Data validation started
+[2026-04-05 09:12:25,986] 35 root INFO Required number of columns:31
+[2026-04-05 09:12:25,986] 36 root INFO Data frame has :31
+[2026-04-05 09:12:25,986] 35 root INFO Required number of columns:31
+[2026-04-05 09:12:25,986] 36 root INFO Data frame has :31

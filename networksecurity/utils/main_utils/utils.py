@@ -53,6 +53,6 @@ def save_object(file_path:str,object)-> None:
         dir_path = os.path.dirname(file_path)
         os.makedirs(dir_path,exist_ok=True)
         with open(file_path,'wb') as file_obj:
-            pickle.dump(file_obj,object)
+            pickle.dump(object,file_obj)
     except Exception as e:
         raise NetworkSecurityException(e,sys)

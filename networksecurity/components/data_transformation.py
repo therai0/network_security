@@ -16,7 +16,7 @@ from networksecurity.entity.artifact_entity import (
     DataTransformationArtifacts,
     DataValidationArtifacts,
 )
-from networksecurity.utils.main_utils.utils import save_numpy_array_data
+from networksecurity.utils.main_utils.utils import save_numpy_array_data, save_object
 from networksecurity.entity.config_entity import DataTransformationConfig
 
 
@@ -46,7 +46,6 @@ class DataTransformation:
             logging.info(
                 f"Initlization of KNNImputer with params {DATA_TRANSFORMATION_IMPUTER_PARAMS}"
             )
-
             processor: Pipeline = Pipeline([("imputer", imputer)])
             return processor
         except Exception as e:
@@ -69,7 +68,7 @@ class DataTransformation:
                 self.data_validation_artifacts.valid_train_file_path
             )
             test_df = DataTransformation.read_data(
-                self.data_validation_artifacts.invalid_test_file_path
+                self.data_validation_artifacts.valid_test_file_path
             )
 
             # Dropping the target colums
@@ -85,8 +84,19 @@ class DataTransformation:
             transformed_input_train_features = preprocessor.fit_transform(input_features_train_df)
             transformed_input_test_features = preprocessor.transform(input_features_test_df)
             
+            train_arr =  np.c_[transformed_input_train_features,np.array(train_target_features)]
+            test_arr = np.c_[transformed_input_test_features,np.array(test_target_features)]
 
+            save_numpy_array_data(self.data_transformation_config.data_transformed_train_file_path,array=train_arr)
+            save_numpy_array_data(self.data_transformation_config.data_transformed_test_file_path,array=test_arr)
+            save_object(self.data_transformation_config.transformed_object_file_path,object=preprocessor)
 
+            data_transform_artifacts = DataTransformationArtifacts(
+                transformed_obect_file_path=self.data_transformation_config.transformed_object_file_path,
+                transformed_train_file_path= self.data_transformation_config.data_transformed_train_file_path,
+                transformed_test_file_path= self.data_transformation_config.data_transformed_test_file_path
+            )
+            return data_transform_artifacts
 
         except Exception as e:
             raise NetworkSecurityException(e, sys)

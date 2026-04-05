@@ -5,7 +5,6 @@ class DataIngestionArtifacts:
     train_file_path:str
     test_file_path:str 
 
-
 @dataclass
 class DataValidationArtifacts:
     validation_status:bool
