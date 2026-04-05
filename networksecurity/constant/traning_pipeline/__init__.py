@@ -11,6 +11,8 @@ FILE_NAME:str = "phisingData.csv" #data file name
 TRAIN_FILE_NAME ="train.csv"
 TEST_FILE_NAME = "test.csv"
 
+SAVED_MODEL_DIR = os.path.join("saved_models")
+
 
 """
 Data ingestion related constant start with DATA_INGESTION VAR NAME 
@@ -61,3 +63,13 @@ Preprocessor file name
 PREPROCESSOR_OBJECT_FILE_NAME = "preprocessor.pkl"
 
 
+
+"""
+Model trainer related constant start with MODEL_TRAINER VAR NAME 
+"""
+
+MODEL_TRAINER_DIR_NAME:str = "model_trainer"
+MODEL_TRAINER_TRAINED_DIR_NAME:str = "trained_model"
+MODEL_TRAINER_TRAINED_MODEL_NAME:str = "model.pkl"
+MODEL_TRAINER_EXPECTED_SCORE:str = 0.6
+MODEL_TRAINER_OVERFITTING_UNDERFITTING_THRESHOLD:float = 0.05 

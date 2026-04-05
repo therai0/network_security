@@ -1,0 +1,19 @@
+[2026-04-05 16:50:40,423] 19 root INFO Data ingestion started
+[2026-04-05 16:50:40,423] 62 root INFO Data ingestion config
+[2026-04-05 16:50:40,423] 82 root INFO Data Ingestion started
+[2026-04-05 16:50:42,200] 66 root INFO Split the data into train and test
+[2026-04-05 16:50:42,224] 72 root INFO Exporting traning dataset
+[2026-04-05 16:50:42,230] 75 root INFO Exporting test dataset
+[2026-04-05 16:50:42,230] 86 root INFO End of Data ingestion
+[2026-04-05 16:50:42,230] 26 root INFO Complete of data ingestion
+[2026-04-05 16:50:42,230] 29 root INFO Data validation started
+[2026-04-05 16:50:42,243] 35 root INFO Required number of columns:31
+[2026-04-05 16:50:42,243] 36 root INFO Data frame has :31
+[2026-04-05 16:50:42,243] 35 root INFO Required number of columns:31
+[2026-04-05 16:50:42,243] 36 root INFO Data frame has :31
+[2026-04-05 16:50:42,320] 36 root INFO End of data validation
+[2026-04-05 16:50:42,320] 39 root INFO Initation of data transformation
+[2026-04-05 16:50:42,320] 66 root INFO Data transformation initation
+[2026-04-05 16:50:42,330] 46 root INFO Initlization of KNNImputer with params {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[2026-04-05 16:50:42,340] 52 root INFO Initation of model trainng
+[2026-04-05 16:50:43,542] 62 root INFO ModelTrainerArtifacts(train_model_file_path='Artifacts/04_05_2026_16_50_39/model_trainer/trained_model/model.pkl', train_metric_artifact=ClassificationMetricArtifacts(f1_score=0.991180942726812, precision_score=0.988675429726997, recall_score=0.9936991869918699), test_metric_artifact=ClassificationMetricArtifacts(f1_score=0.9771359807460891, precision_score=0.9697452229299363, recall_score=0.98464025869038))
