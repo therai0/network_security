@@ -1,0 +1,18 @@
+[2026-04-05 17:49:18,274] 19 root INFO Data ingestion started
+[2026-04-05 17:49:18,275] 62 root INFO Data ingestion config
+[2026-04-05 17:49:18,275] 82 root INFO Data Ingestion started
+[2026-04-05 17:49:20,274] 66 root INFO Split the data into train and test
+[2026-04-05 17:49:20,298] 72 root INFO Exporting traning dataset
+[2026-04-05 17:49:20,304] 75 root INFO Exporting test dataset
+[2026-04-05 17:49:20,304] 86 root INFO End of Data ingestion
+[2026-04-05 17:49:20,304] 26 root INFO Complete of data ingestion
+[2026-04-05 17:49:20,304] 29 root INFO Data validation started
+[2026-04-05 17:49:20,317] 35 root INFO Required number of columns:31
+[2026-04-05 17:49:20,317] 36 root INFO Data frame has :31
+[2026-04-05 17:49:20,317] 35 root INFO Required number of columns:31
+[2026-04-05 17:49:20,317] 36 root INFO Data frame has :31
+[2026-04-05 17:49:20,401] 36 root INFO End of data validation
+[2026-04-05 17:49:20,401] 39 root INFO Initation of data transformation
+[2026-04-05 17:49:20,401] 66 root INFO Data transformation initation
+[2026-04-05 17:49:20,410] 46 root INFO Initlization of KNNImputer with params {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[2026-04-05 17:49:20,419] 52 root INFO Initation of model trainng

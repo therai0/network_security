@@ -1,0 +1,9 @@
+[2026-04-05 17:45:45,209] 19 root INFO Data ingestion started
+[2026-04-05 17:45:45,209] 62 root INFO Data ingestion config
+[2026-04-05 17:45:45,209] 82 root INFO Data Ingestion started
+[2026-04-05 17:45:47,290] 66 root INFO Split the data into train and test
+[2026-04-05 17:45:47,314] 72 root INFO Exporting traning dataset
+[2026-04-05 17:45:47,320] 75 root INFO Exporting test dataset
+[2026-04-05 17:45:47,320] 86 root INFO End of Data ingestion
+[2026-04-05 17:45:47,320] 26 root INFO Complete of data ingestion
+[2026-04-05 17:45:47,320] 29 root INFO Data validation started
