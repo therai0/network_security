@@ -100,6 +100,10 @@ class ModelTrainer:
                 self.model_trainer_config.train_model_file_path, object=network_model
             )
 
+            # saving the model in final model dir 
+            save_object("final_model/model.pkl",best_model)
+        
+
             # model trainer artifacts
             model_trainer_artifacts = ModelTrainerArtifacts(
                 train_model_file_path=self.model_trainer_config.train_model_file_path,
